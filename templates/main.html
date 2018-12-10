@@ -244,7 +244,7 @@
             text-align: center
         }
 
-        .m-message .time > span {
+        .m-message .time>span {
             display: inline-block;
             padding: 0 18px;
             font-size: 9pt;
@@ -291,6 +291,11 @@
             margin: 0 0 0 10px
         }
 
+        .m-message .self .avatar2 {
+            float: right;
+            margin: 0 10px 0 0
+        }
+
         .m-message .self .text {
             background-color: #b2e281
         }
@@ -302,11 +307,37 @@
             border-left-color: #b2e281
         }
 
+        .m-message .self2 {
+            text-align: left;
+        }
+
+    
+
+        .m-message .self2 .avatar2 {
+            float: right;
+            margin: 0 10px 0 0
+        }
+
+        .m-message .self2 .text {
+            background-color: #b2e281
+        }
+
+        
+        .m-message .self2 .text:before {
+            right: inherit;
+            right: 100%;
+            border-right-color: #b2e281;
+            border-left-color: transparent;
+        }
+
+        
+
+
         .m-message a {
             font-size: 0.7em;
         }
 
-        li a, .dropbtn {
+        .menu {
             display: inline-block;
             vertical-align: middle;
             background: url('../static/menu.png') no-repeat;
@@ -316,7 +347,10 @@
             height: 1.5em;
         }
 
-        li a:hover, .dropdown:hover .dropbtn {
+
+
+        li a:hover,
+        .dropdown:hover .dropbtn {
             background-color: #1f75cf;
         }
 
@@ -376,7 +410,7 @@
 
 
         window.onclick = function (e) {
-            if (!e.target.matches('.dropbtn')) {
+            if (!e.target.matches('.menu')) {
                 hideList("");
             }
         }
@@ -387,168 +421,188 @@
 
 <body>
 
-<div id="chat">
-    <div class="sidebar">
-        <div class="m-card">
-            <header><img class="avatar" width="40" height="40" alt="Coffce" src="../static/1.jpg">
-                <p class="name" id='nick_name_id'>{{ username }}</p>
+    <div id="chat">
+        <div class="sidebar">
+            <div class="m-card">
+                <header><img class="avatar" width="40" height="40" alt="Coffce" src="../static/1.jpg">
+                    <p class="name" id='nick_name_id'>{{ username }}</p>
 
 
-                <a id="a" href="javascript:void(0)" class="dropbtn" onclick="showList(this)"></a>
-                <form name="form1" id="form1_id" method="post">
-                    {% csrf_token %}
+                    <a id="a" href="javascript:void(0)" class="menu" onclick="showList(this)"></a>
+                    <form name="form1" id="form1_id" method="post">
+                        {% csrf_token %}
 
-                    <div class="dropdown-content" id="dropdown-a">
-                        <div>
-                            <input type="submit" name="Profile" value="Profile">
+                        <div class="dropdown-content" id="dropdown-a">
+                            <div>
+                                <input type="submit" name="Profile" value="Profile">
+                            </div>
+                            <div>
+                                <input type="submit" name="LogOut" value="Log Out">
+                            </div>
+
+
                         </div>
-                        <div>
-                            <input type="submit" name="LogOut" value="Log Out">
-                        </div>
 
+                    </form>
+
+
+                </header>
+                <p id='user_email'>{{ email }}</p>
+                <footer><input class="search" placeholder="search user..."></footer>
+            </div>
+            <!--v-component-->
+            <div class="m-list">
+                <ul id="user_list">
+
+                </ul>
+            </div>
+            <!--v-component-->
+        </div>
+        <div class="main" id="app">
+            <div id="messageScroll" class="m-message">
+                <ul>
+                    {# <li>#}
+                        {# <p class="time"><span>currenttime</span></p>#}
+                        {# <div class="main self">#}
+                            {# <a>name</a><br>#}
+                            {# <img class="avatar" width="30" height="30" src="../static/1.jpg">#}
+                            {# <div class="text">message#}
+                                {# </div>#}
+                            {# </div>#}
+                        {# </li>#}
+                    <div v-html="rawHtml">
 
                     </div>
 
-                </form>
+                    <!--v-for-end-->
+                </ul>
 
-
-            </header>
-            <p id='user_email'>{{ email }}</p>
-            <footer><input class="search" placeholder="search user..."></footer>
-        </div>
-        <!--v-component-->
-        <div class="m-list">
-            <ul id = "user_list">
-               
-            </ul>
-        </div>
-        <!--v-component-->
-    </div>
-    <div class="main" id="app">
-        <div id="messageScroll" class="m-message">
-            <ul>
-                {#                    <li>#}
-                {#                        <p class="time"><span>currenttime</span></p>#}
-                {#                        <div class="main self">#}
-                {#                            <a>name</a><br>#}
-                {#                            <img class="avatar" width="30" height="30" src="../static/1.jpg">#}
-                {#                            <div class="text">message#}
-                {#                            </div>#}
-                {#                        </div>#}
-                {#                    </li>#}
-                <div v-html="rawHtml">
-
-                </div>
-
-                <!--v-for-end-->
-            </ul>
-
-        </div>
-        <!--v-component-->
-        <form v-on:submit.prevent.stop="sendMessage">
-            <div class="m-text">
-                <textarea v-model="message" placeholder="Enter message"></textarea>
-                <div>
-                    <button class="sendbutton white" v-on:click="">Send</button>
-                </div>
             </div>
-        </form>
-        <!--v-component-->
-    </div>
-    <script>
-        new Vue({
-            el: "#app",
+            <!--v-component-->
+            <form v-on:submit.prevent.stop="sendMessage">
+                <div class="m-text">
+                    <textarea v-model="message" placeholder="Enter message"></textarea>
+                    <div>
+                        <button class="sendbutton white" v-on:click="">Send</button>
+                    </div>
+                </div>
+            </form>
+            <!--v-component-->
+        </div>
+        <script>
+            new Vue({
+                el: "#app",
 
-            //     rawHtml : '<li></li>'
-            // ,
-            data() {
+                //     rawHtml : '<li></li>'
+                // ,
+                data() {
 
-                return {
-                    rawHtml: '<li></li>',
-                    username: "",
-                    message: "",
-                    ready: false,
-                    ws: null,
-                }
-            },
-            created() {
-                // insert code here to connect to 'ws://localhost:8080/echo' and assign the
-                // new websocket to 'this.ws'
-                this.websocket = new WebSocket("ws://localhost:8080/echo");
-                this.websocket.onmessage = this.recvMessageHandler;
-                console.log("Web socket is created.");
-            },
-
-            methods: {
-                getReady() {
-                    // DO NOT CHANGE THIS FUNCTION!
-                    this.ready = true
+                    return {
+                        rawHtml: '<li></li>',
+                        username: "",
+                        message: "",
+                        ready: false,
+                        ws: null,
+                    }
                 },
-                recvMessageHandler(message) {
-                    // insert code here
-                    console.log("You receive: " + message.data);
-
-                    this.rawHtml += message.data;
-                    this.$nextTick(() => {
-
-                        var div = document.getElementById('messageScroll');
-                        div.scrollTop = div.scrollHeight;
-
-                    })
-
-
+                created() {
+                    // insert code here to connect to 'ws://localhost:8080/echo' and assign the
+                    // new websocket to 'this.ws'
+                    this.websocket = new WebSocket("ws://localhost:8080/echo");
+                    this.websocket.onmessage = this.recvMessageHandler;
+                    this.username = "{{ username }}";
+                    console.log("Web socket is created.");
                 },
-                sendMessage() {
-                    // insert code here
-                    console.log("You send: " + this.message);
-                    var date = new Date();
-                    var seperator = ":";
-                    var hour = date.getHours();
-                    var minute = date.getMinutes();
-                    var currenttime = hour + seperator + minute;
-                    var data = '<li>' + '<p class="time"><span>' + currenttime + '</span></p>' +
-                        '<div class="main self">' + '<a >' + document.getElementById('nick_name_id').innerHTML + '</a><br>' +
-                        '<img class="avatar" width="30" height="30" src="../static/1.jpg">' +
-                        '<div class="text">' + this.message +
-                        '</div></div></li>'
+
+                methods: {
+                    getReady() {
+                        // DO NOT CHANGE THIS FUNCTION!
+                        this.ready = true
+                    },
+                    recvMessageHandler(message) {
+                        // insert code here
+                        var data = JSON.parse(message.data);
+                        console.log("You receive: " + data.currenttime);
+
+                        if (data.name == this.username) {
+                            this.rawHtml += ('<li>' + '<p class="time"><span>' + data.currenttime + '</span></p>' +
+                                '<div class="main self">' + '<a >' + data.name + '</a><br>' +
+                                '<img class="avatar" width="30" height="30" src="../static/1.jpg">' +
+                                '<div class="text">' + data.detail_message +
+                                '</div></div></li>');
+                        } else {
+                            this.rawHtml += ('<li>' + '<p class="time"><span>' + data.currenttime + '</span></p>' +
+                                '<div class="main self2">' + '<a >' + data.name + '</a><br>' +
+                                '<img class="avatar" width="30" height="30" src="../static/1.jpg">' +
+                                '<div class="text">' + data.detail_message +
+                                '</div></div></li>');
+                        }
+
+                        this.$nextTick(() => {
+
+                            var div = document.getElementById('messageScroll');
+                            div.scrollTop = div.scrollHeight;
+
+                        })
 
 
-                    this.websocket.send(data);
-                    this.message = "";
+                    },
+                    sendMessage() {
+                        // insert code here
+                        console.log("You send: " + this.message);
+                        var date = new Date();
+                        var seperator = ":";
+                        var hour = date.getHours();
+                        var minute = date.getMinutes();
+                        var currenttime = hour + seperator + minute;
+                        var data1 = {
+                            currenttime: currenttime,
+                            name: document.getElementById('nick_name_id').innerHTML,
+                            detail_message: this.message
+                        }
+                        // var data = '<li>' + '<p class="time"><span>' + currenttime + '</span></p>' +
+                        //     '<div class="main self">' + '<a >' + document.getElementById('nick_name_id').innerHTML + '</a><br>' +
+                        //     '<img class="avatar" width="30" height="30" src="../static/1.jpg">' +
+                        //     '<div class="text">' + this.message +
+                        //     '</div></div></li>'
+
+
+                        this.websocket.send(JSON.stringify(data1));
+                        this.message = "";
+                    }
                 }
-            }
-        })
-    </script>
-    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-           setInterval(function () {
-               $.ajax({
-                        url: "http://127.0.0.1:8000/users", 
-                        data:{checkmail:$('#user_email').text()},
+            })
+        </script>
+        <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                setInterval(function () {
+                    $.ajax({
+                        url: "http://127.0.0.1:8000/users",
+                        data: { checkmail: $('#user_email').text() },
                         dataType: "json",
                         success: function (result) {
-                            $('#user_list').empty();   
-                            var html = ''; 
+                            $('#user_list').empty();
+                            var html = '';
                             //遍历返回的数据，查看当前的在线人数
                             console.log($('#user_email').text());
                             console.log(result);
                             var mydate = new Date();
                             var times = mydate.getTime() / 1000;
                             console.log(times);
-                            $.each(result, function(index, data){
-                                if(times - data.last_check < 3){
-                                    html += '<li><img class="avatar" width="30" height="30" alt="webpack" src="../static/3.jpg"><p class="name">' +data.username +'</p>'
+                            $.each(result, function (index, data) {
+                                if (times - data.last_check < 3) {
+                                    html += '<li><img class="avatar" width="30" height="30" alt="webpack" src="../static/1.jpg"><p class="name">' + data.username + '</p>'
                                 }
                             });
                             $('#user_list').html(html);
                         }
-               })
-           },1000);
-        });
+                    })
+                }, 1000);
+            });
 
-    </script>
-</div>
+        </script>
+    </div>
 
 
 </body>
