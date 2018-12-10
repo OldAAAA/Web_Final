@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh_CN">
+<head>
+    <title>Update Email</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut.icon" href="/static/images/favicon.png">
+    <link rel="stylesheet" href="/static/css/style2.css">
+    <script src="/static/js/update_judge.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+</head>
+<body> 
+        <!--BEGIN main-->
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                <div class="col-md-4" style="padding-left:0px;padding-right:0px;">
+                    <div class="personimage">
+                        <img class="img-responsive center-block" src="/static/images/person.jpg ">
+                    </div>
+                    <div id="friends">
+                            <div class="friend w3layouts">
+                                    <img src="/static/images/winter-soldier.jpg">
+                                    <p>
+                                        <strong>Bucky Barnes</strong>
+                                        <span>wintersoldier@gmail.com</span>
+                                    </p>
+                                    <div class="status available"></div>
+                                </div>
+                                <div class="friend">
+                                    <img src="/static/images/captain-america.jpg">
+                                    <p>
+                                        <strong>Steve Rogers</strong>
+                                        <span>captainamerica@gmail.com</span>
+                                    </p>
+                                    <div class="status away"></div>
+                                </div>
+                    </div>
+                </div>
+                <div class="col-md-8" style="padding-left:0px;padding-right:0px;">
+                    <div class="chatview">
+                            <div class="form-inline">
+                                <div class="personimage">
+                                        <img class="img-circle" src="/static/images/person.jpg ">
+                                </div>
+                                <!-- <form method = 'post' action="" enctype="multipart/form-data">{% csrf_token %} -->
+                                <div class="update_email">
+                                    <span id="checkemail">{{ error }} </span>
+                                    <form method="POST">
+                                         {% csrf_token %}
+                                        <input type="email" id=email placeholder="Email">
+                                        <input type="submit" class="btn btn-primary btn-block" onclick="return isEmail();"></input>
+                                    </form>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!--END main-->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+</body>
+</html>

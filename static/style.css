@@ -1,0 +1,118 @@
+body{
+    background-color:rgb(241,241,241);
+    background-image: url("/static/images/slide-1.jpg");
+    background-repeat: no-repeat;
+    background-position:left center;
+    background-attachment: fixed;
+    background-size: 100%;
+}
+
+.info{
+    font-size: 20px;
+    font-family:"aial";
+    padding-top: 0px;
+    padding-bottom: 5px;
+}
+.register-title{
+    font-size: 30px;
+    font-family:"aial";
+    padding-top: 0px;
+    padding-bottom: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.reminfo{
+    font-size: 17px;
+    font-family:"aial";
+    padding: 0px;
+}
+.loginframe{
+    display: block;
+    width:25%;
+    border: 3px solid rgb(229,229,229);
+    background-color: white;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 2em;
+    padding-bottom: 3em;
+    position: absolute;
+    left: 75%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.loginframe .flex{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width:-webkit-fill-available;
+    height: 42px;
+    margin-top: 20px;
+    justify-content:center;
+    align-items:baseline;
+}
+
+.inputname{
+    width: -webkit-fill-available;
+    height: 1.5em;
+    background-color:rgb(241,241,241);
+    outline: none;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+
+}
+
+
+input[type="password"]{
+    background-color:rgb(241,241,241);
+    width: -webkit-fill-available;
+    outline:none;
+    height: 1.5em;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+     font-size: 18px;
+}
+
+input[type="checkbox"] {
+    vertical-align:middle;
+    background: #fff;
+    height: 22px;
+    width: 22px;
+    align-self: flex-start;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+input[type="submit"]{
+    background-color: #008CBA;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    align-self: flex-end;
+}
+.loginframe .hint_register{
+    font-size: 10px;
+    float: right;
+    margin-top: 10px;
+}
+.error{
+    color: red;
+}
+.success{
+    color: green;
+}

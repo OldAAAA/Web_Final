@@ -1,0 +1,58 @@
+<html lang="en">
+        <link rel="shortcut icon" href="/static/images/favicon.png" >
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+        <!-- <link rel="stylesheet" href="../static/css/reset.css"> -->
+        <!-- <link rel="stylesheet" href="../static/css/style1.css"> -->
+    </head>
+
+            <form method="post" action="/register/"  enctype="multipart/form-data">
+                {% csrf_token %}
+                <link rel="stylesheet" href="/static/reset.css">
+                <link rel="stylesheet" href="/static/style.css">
+                <link rel="shortcut icon" href="/static/images/favicon.png" >
+			    <link rel="stylesheet" href="/static/css/style1.css">
+				<script src="/static/js/judge.js"></script>
+				
+				<div class="inner" id=signup_inner>
+                <div class="title">Sign up</div>
+                <div class="enter_text">
+                    
+                    <!--<input type="text" id=username placeholder="Username">-->
+                    {{ form.username }}
+                    <span class="error" id="usrnameErr"></span>
+                    <div class="error">
+                        {{ errorUsername }}
+                    </div>
+                    <!--<span id="checkemail"> </span>-->
+                    <!--<input type="email" id=email placeholder="Email">-->
+                    {{ form.email }}
+                    <div>
+                        <span class="error">{{error.email}}</span>
+                    </div>
+                    <span class="error" id="usrEmailErr"></span>
+                    <div id="error_div" class="error">
+                        {{ error1 }}
+                    </div>
+                    <!--<span id="checkpassword"> </span>-->
+                    <!--<input type="password" id=password placeholder="Password">-->
+                    <!--<input type="password" id=password_confirmation placeholder="Password confirmation">-->
+                    {{ form.pwd }}
+
+                    <span class="error" id="usrPasswordShortErr"></span>
+                    <div class="error">
+                        {{ errorPasswordShort }}
+                    </div>
+
+                    {{ form.pwd_confirm }}
+                    <span class="error" id="usrPasswordMismatchErr"></span>
+                    <div class="error">
+                        {{ errorPasswordMatch }}
+                    </div>
+                </div>
+                <button name="Submit" value="Submit" onclick="return isEmail(),checkpassword();"><span>Sign up </span></button>
+            </div>
+        </form>
+
+</html>

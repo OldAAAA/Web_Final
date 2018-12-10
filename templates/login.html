@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+        <link rel="shortcut icon" href="/static/images/favicon.png" >
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+        <!-- <link rel="stylesheet" href="../static/css/reset.css"> -->
+        <!-- <link rel="stylesheet" href="../static/css/style1.css"> -->
+        <link rel="stylesheet" href="/static/css/style1.css">
+        <!-- <script src="../static/js/regulation.js"></script> -->
+    </head>
+    <body>
+        <form id="Login" method="POST" action="/login/" >
+            {% csrf_token %}
+        <main>
+            <div class="inner" id=login_inner>
+                <div class="title">User Login</div>
+                <div class="enter_text">
+                    <input type="email" name='email' placeholder="Email" value="{{ email }}">
+                    <input type="password" name='pw' placeholder="Password">
+                    <div class="error">
+                        {{ emailNotExistError }}
+                        {{ passwordWrongError }}
+                    </div>
+                </div>
+                <button><span>Log in </span></button>
+                <div class="tips">
+                    No account?
+                    <a href="/register/"> Let's create one!</a>
+                </div>
+            </div>
+        </main>
+        </form>
+    </body>
+</html>

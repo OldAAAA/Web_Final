@@ -1,0 +1,76 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Me</title>
+        <link rel="stylesheet" href="../static/reset.css">
+        <link rel="stylesheet" href="../static/style.css">
+        <link rel="shortcut icon" href="/static/images/favicon.png" >
+        <script src="../static/check.js"></script>
+    </head>
+    <body>
+        <main>
+            <!-- insert your code here -->
+            <div class="loginframe">
+                <p class="register-title">Me</p>
+
+                <p class="info">Username</p>
+                <input class="inputname" type="text" id="txt_usrname_me" value={{username}} readonly="true"/>
+
+                <p class="info">Creation Date</p>
+                <input class="inputname" type="text" id="txt_creationDate" readonly="true" value={{ created_at|date:'Y-m-d[H:i:s]'}}  />
+
+                <p class="info">Email Address</p>
+
+                <form  method="post">
+                    {% csrf_token %}
+                    {{ form.email }}
+                    <div>
+                        <span class="error">{{error.email}}</span>
+                    </div>
+                    <span class="error" id="usrChangeEmailErr"></span>
+                    <div id="success_div" class="success">
+                        {{ changeEmailSuccess }}
+                    </div>
+                    <div class="flex" >
+                        <input type="submit" name="ChangeEmail" value="Change Email" onclick="check_changeEmail()"/>
+                    </div>
+
+                </form>
+
+
+                <form  method="post" >
+                    {% csrf_token %}
+                    <p class="info">Old Password</p>
+                    {{ form2.old_pwd }}
+                    <div class="error">
+                        {{ oldPasswordWrong }}
+                    </div>
+                    <p class="info">New Password</p>
+                    {{ form2.new_pwd }}
+                    <span class="error" id="newPasswordTooShort"></span>
+                    <div class="error">
+                        {{newPasswordTooShort}}
+                    </div>
+                    <p class="info">New Password Confirm</p>
+                    {{ form2.new_pwd_confirm }}
+                    <span class="error" id="passwordNotMatch"></span>
+                    <div class="error">
+                        {{passwordNotMatch}}
+                    </div>
+                    <div class="success">
+                        {{passwordChangeSuccess}}
+                    </div>
+                    <div class="flex" >
+                         <input type="submit" name="ChangePassword" value="Change Password" onclick="check_changePassword()"/>
+                    </div>
+                </form>
+
+                <form  method="post" class="flex">
+                    {% csrf_token %}
+                    <input  type="submit"  name="LogOut" value="Log Out" />
+                </form>
+            </div>
+        </main>
+    </body>
+</html>

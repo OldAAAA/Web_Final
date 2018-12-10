@@ -1,0 +1,153 @@
+{% load staticfiles %}
+<html lang="en">
+
+	<!-- Head -->
+	<head>
+		<title>Home</title>
+		
+		<meta name="WeCoze" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="Web chat room">
+		<link rel="shortcut icon" href="/static/images/favicon.png" >
+		
+		<script type="application/x-javascript"> 
+			addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+		</script>
+
+		<link rel="stylesheet" href="/static/css/bootstrap.min.css"	type="text/css" media="all">
+		<link rel="stylesheet" href="/static/css/style.css" 		type="text/css" media="all">
+		<link rel="stylesheet" href="/static/css/animate.css" 		type="text/css" media="all">
+
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" type="text/css">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cinzel+Decorative:400,900,700" type="text/css">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat:400,700"			   type="text/css">
+
+	</head>
+	<!-- //Head -->
+
+	<!-- Body -->
+	<body>
+		<!--main content-->
+		<div class="header agileits w3layouts" id="home">
+		
+			<!-- Navbar -->
+			<nav class="navbar navbar-default w3l aits wow bounceInUp agileits w3layouts">
+				<div class="container">
+
+					<div class="navbar-header agileits w3layouts">
+						<button type="button" class="navbar-toggle agileits w3layouts collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+							<span class="sr-only agileits w3layouts">Toggle navigation</span>
+							<span class="icon-bar w3l"></span>
+							<span class="icon-bar aits"></span>
+							<span class="icon-bar w3laits"></span>
+						</button>
+						<a class="navbar-brand agileits w3layouts" href="index.html">WeCoze</a>
+					</div>
+
+					<div id="navbar" class="navbar-collapse agileits w3layouts navbar-right collapse">
+						<ul class="nav agileits w3layouts navbar-nav">
+							<li><a href="/login/">Sign In</a></li>
+							<li><a href="/register">Sign up</a></li>
+						</ul>
+					</div>
+
+				</div>
+			</nav>
+			<!-- //Navbar -->
+
+			<!-- Slider1 -->
+			<div class="slider agileits w3layouts">
+				<div class="slider-1 agileits w3layouts">
+					<ul class="rslides agileits w3layouts" id="slider1">
+					<li>
+						<img src="/static/images/slide-1.jpg" alt="Agileits W3layouts">
+						<div class="layer agileits w3layouts"></div>
+						<div class="caption agileits w3layouts">
+							<h3>Welcome To <span>WeCoze</span></h3>
+						</div>
+						<div>
+							{% block content %}
+							{% endblock %}
+						</div>
+					</li>
+					<li>
+						<img src="/static/images/slide-2.jpg" alt="Agileits W3layouts">
+						<div class="caption agileits w3layouts">
+							<h3>Chat with your best friend</h3>
+						</div>
+					</li>
+					<li>
+						<img src="/static/images/slide-3.jpg" alt="Agileits W3layouts">
+						<div class="caption agileits w3layouts">
+							<h3>Make friend in the Internet</h3>
+						</div>
+					</li>
+					<li>
+						<img src="/static/images/slide-4.jpg" alt="Agileits W3layouts">
+						<div class="caption agileits w3layouts">
+							<h3>Efficient Communication</h3>
+						</div>
+					</li>
+					<li>
+						<img src="/static/images/slide-5.jpg" alt="Agileits W3layouts">
+						<div class="layer agileits w3layouts"></div>
+						<div class="caption agileits w3layouts">
+							<h3>Build your relationship</h3>
+						</div>
+					</li>
+				</ul>
+				</div>
+			</div>
+			<!-- //Slider1 -->
+			<div class="clearfix"></div>
+		</div>
+		<!--main content-->
+		
+		<!-- Footer -->
+		<div class="footer agileits w3layouts">
+			<div class="container">
+				<div class="col-md-12 col-sm-12 footer-grids agileits w3layouts newsletter wow fadeInUp">
+					<h4>Stay Connected</h4>
+					<p>Subscribe to our newsletter and get informed of our newest projects.</p>
+					<form action="#" method="post">
+						<input type="text" placeholder="Email" name="Email" required="">
+						<input type="submit" value="SUBSCRIBE">
+					</form>
+				</div>
+				<div class="col-md-12 col-sm-12 footer-grids agileits w3layouts copyright wow fadeInUp">
+					<p>Copyright &copy; 2018.WeCoze All rights reserved.</p>
+				</div>
+				<div class="clearfix"></div>
+
+			</div>
+		</div>	
+		<!-- //Footer -->
+		
+		<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"  ></script>
+		<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+		<script src="/static/js/wow.min.js"></script>
+		
+		<script>
+			new WOW().init();
+		</script>
+		
+		<script src="/static/js/responsiveslides.min.js"></script>
+		
+		<!--change the slide by a speed of 1500-->
+		<script>
+			$(function () {
+				$("#slider1, #slider2, #slider3, #slider4").responsiveSlides({
+					auto: true,
+					nav: true,
+					speed: 1500,
+					namespace: "callbacks",
+					pager: true,
+				});
+			});
+		</script>
+
+
+
+	</body>
+	<!-- //Body -->
+</html>
