@@ -1,29 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-        <link rel="shortcut icon" href="/static/images/favicon.png" >
+        <link rel="shortcut icon" href="../static/images/favicon.png" >
     <head>
         <meta charset="utf-8">
         <title>Login</title>
-        <!-- <link rel="stylesheet" href="../static/css/reset.css"> -->
-        <!-- <link rel="stylesheet" href="../static/css/style1.css"> -->
-        <link rel="stylesheet" href="/static/css/style1.css">
-        <!-- <script src="../static/js/regulation.js"></script> -->
+        
+{#navbar#}
+        <meta name="WeCoze" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="Web chat room">
+		<link rel="shortcut icon" href="../static/images/favicon.png" >
+		<script type="application/x-javascript">
+			addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+		</script>
+		
+		<link rel="stylesheet" href="../static/css/bootstrap.min.css"	type="text/css" media="all">
+		<link rel="stylesheet" href="../static/css/style.css" 		type="text/css" media="all">
+		<link rel="stylesheet" href="../static/css/animate.css" 		type="text/css" media="all">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" type="text/css">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cinzel+Decorative:400,900,700" type="text/css">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat:400,700"			   type="text/css">
     </head>
     <body>
+    <!-- Navbar -->
+			<nav class="navbar navbar-default w3l aits wow bounceInUp agileits w3layouts">
+				<div class="container">
+
+					<div class="navbar-header agileits w3layouts">
+						<button type="button" class="navbar-toggle agileits w3layouts collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+							<span class="sr-only agileits w3layouts">Toggle navigation</span>
+							<span class="icon-bar w3l"></span>
+							<span class="icon-bar aits"></span>
+							<span class="icon-bar w3laits"></span>
+						</button>
+						<a class="navbar-brand agileits w3layouts" href="index.html">WeCoze</a>
+					</div>
+
+					<div id="navbar" class="navbar-collapse agileits w3layouts navbar-right collapse">
+						<ul class="nav agileits w3layouts navbar-nav">
+							<li><a href="/login/">Sign In</a></li>
+							<li><a href="/register">Sign up</a></li>
+						</ul>
+					</div>
+
+				</div>
+			</nav>
+			<!-- //Navbar -->
+
         <form id="Login" method="POST" action="/login/" >
             {% csrf_token %}
         <main>
             <div class="inner" id=login_inner>
+				<link rel="stylesheet" href="../static/css/style1.css">
                 <div class="title">User Login</div>
                 <div class="enter_text">
-                    <input type="email" name='email' placeholder="Email" value="{{ email }}">
-                    <input type="password" name='pw' placeholder="Password">
+                    <input class="inputText" type="email" name='email' placeholder="Email／Username" value="{{ email }}">
+                    <input class="inputText" type="password" name='pw' placeholder="Password">
                     <div class="error">
                         {{ emailNotExistError }}
                         {{ passwordWrongError }}
                     </div>
                 </div>
-                <button><span>Log in </span></button>
+                <button class="button_Text"><span>Log in </span></button>
                 <div class="tips">
                     No account?
                     <a href="/register/"> Let's create one!</a>

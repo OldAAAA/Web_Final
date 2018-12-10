@@ -20,14 +20,15 @@ User = get_user_model()
 class MyForm(forms.Form):
     email = forms.EmailField(required=False, error_messages={'invalid': 'enter a valid email address.'},
                              widget=forms.TextInput(
-                                 attrs={'id': 'email','placeholder':'Email','oninput': 'checkEmail()'}))
+                                 attrs={'id': 'email', 'class': 'inputText', 'placeholder': 'Email',
+                                        'oninput': 'checkEmail()'}))
     username = forms.CharField(required=False, widget=forms.TextInput(
-        attrs={'id': 'username','placeholder':'Username','oninput': 'checkUsername()'}))
+        attrs={'id': 'username', 'class': 'inputText', 'placeholder': 'Username', 'oninput': 'checkUsername()'}))
     pwd = forms.CharField(required=False, widget=forms.PasswordInput(
-        attrs={'id': 'password','placeholder':'Password', 'oninput': 'checkPassword1()'}))
+        attrs={'id': 'password', 'class': 'inputText', 'placeholder': 'Password', 'oninput': 'checkPassword1()'}))
     pwd_confirm = forms.CharField(required=False, widget=forms.PasswordInput(
-        attrs={'id': 'password_confirmation','placeholder':'Password confirmation','oninput': 'checkPassword2()'}))
-
+        attrs={'id': 'password_confirmation', 'class': 'inputText', 'placeholder': 'Password confirmation',
+               'oninput': 'checkPassword2()'}))
 
 class ChangeEmailForm(forms.Form):
     email = forms.EmailField(required=True, error_messages={'invalid': 'enter a valid email address.'},
