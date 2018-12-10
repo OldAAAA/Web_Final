@@ -33,5 +33,6 @@ urlpatterns = [
     path('upemail/',views.upemail),
     path('uppassword/',views.uppassword),
     path('logout/',views.logout),
+    path('profile/',views.profile),
     url(r'^users', user_list),
 ]

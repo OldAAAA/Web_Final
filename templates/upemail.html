@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,52 +11,69 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
     <title>change email</title>
-    <link rel="stylesheet" href="../static/css/style_pro.css" 		type="text/css" media="all">
-    <link rel="shortcut icon" href="../static/images/favicon.png" >
-  </head>
+    <link rel="stylesheet" href="../static/css/style_pro.css" type="text/css" media="all">
+    <link rel="shortcut icon" href="../static/images/favicon.png">
+</head>
 
-  <body>
-  <div class="container">
+<body>
+<div class="container">
 
     <div class="header">
-      <div class="text-center m-b-15">
-      <img src="../static/images/favicon.png">
-      </div>
-      <h3 class="text-center m-t-0 m-b-25">Change Email</h3>
+        <div class="text-center m-b-15">
+            <img src="../static/images/favicon.png">
+        </div>
+        <h3 class="text-center m-t-0 m-b-25">Change Email</h3>
     </div>
     <div class="profile-block">
         <div class="profile-block__left">
             <form role="form" method="post" name="user_account">
-            <div class="form-group ">
-                <div class="center-block">
-                    <img src="../static/1.jpg" class="img-thumbnail" alt="Responsive image">
+                <div class="form-group ">
+                    <div class="center-block">
+                        <img src="../static/1.jpg" class="img-thumbnail" alt="Responsive image">
+                    </div>
                 </div>
-            </div>
 
-                    <span id="checkemail">{{ error }} </span>
-                    <form method="POST">
-                        {% csrf_token %}
+                <span id="checkemail">{{ error }} </span>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group " align="center">
+                        {{ form.email }}
+                    </div>
 
-                        <div class="form-group " align="center">
-                        <input class="form-control" type="email" id="email" placeholder="Email">
-                        </div>
-                        <div class="form-group " align="center">
-                        <input class="btn btn-success" type="submit" class="btn btn-primary btn-block" onclick="return isEmail();" value="Update"></input>
-                        </div>
+                    <div>
+                        <span class="error">{{ error.email }}</span>
+                    </div>
+                    <span class="error" id="usrChangeEmailErr"></span>
+                    <div id="success_div" class="success">
+                        {{ changeEmailSuccess }}
+                    </div>
+                    <div class="form-group " align="center">
+                        <input class="btn btn-success" type="submit" class="btn btn-primary btn-block"
+                               onclick="return isEmail();" value="Update">
+                    </div>
+
+                </form>
+
+
             </form>
-
-          </form>
         </div>
 
     </div>
-  </div>>
+</div>
+>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
 </html>
 
 
