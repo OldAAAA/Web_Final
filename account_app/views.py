@@ -53,10 +53,20 @@ def default(request):
     return render(request,'../templates/index.html')
 
 def main(request):
-	if request.user.is_authenticated:
-		return render(request,'../templates/main.html')
-	else:
-		return render(request,'../templates/index.html')
+    if (request.method == 'POST'):
+        a = request.POST
+        if 'LogOut' in request.POST:
+            if request.user.is_authenticated:
+                auth.logout(request)
+            return render(request, '../templates/index.html')
+
+    else:
+        if request.user.is_authenticated:
+            return render(request, '../templates/main.html', {'username': request.user.username})
+        else:
+            return render(request, '../templates/index.html')
+
+
 		
 def upemail(request):
 	if request.user.is_authenticated:
