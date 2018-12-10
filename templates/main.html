@@ -400,10 +400,10 @@
 
                     <div class="dropdown-content" id="dropdown-a">
                         <div>
-                            <p><a href="profile">Profile</a></p>
+                            <input type="submit" name="Profile" value="Profile">
                         </div>
                         <div>
-                            <p><a href="logout"></a></p>
+                            <input type="submit" name="LogOut" value="Log Out">
                         </div>
 
 
@@ -537,7 +537,7 @@
                             var times = mydate.getTime() / 1000;
                             console.log(times);
                             $.each(result, function(index, data){
-                                if(times - data.last_check < 3){
+                                if(times - data.last_check < 1800){
                                     html += '<li><img class="avatar" width="30" height="30" alt="webpack" src="../static/3.jpg"><p class="name">' +data.username +'</p>'
                                 }
                             });
