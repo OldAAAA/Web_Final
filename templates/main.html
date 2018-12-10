@@ -104,7 +104,6 @@
 
         .m-card .name {
             display: inline-block;
-            margin: 0 0 0 15px;
             font-size: 1pc
         }
 
@@ -414,22 +413,13 @@
 
 
             </header>
+            <p id='user_email'>{{ email }}</p>
             <footer><input class="search" placeholder="search user..."></footer>
         </div>
         <!--v-component-->
         <div class="m-list">
-            <ul>
-                <!--v-for-start-->
-                {#                    <li class="active"><img class="avatar" width="30" height="30" alt="示例介绍" src="../static/2.png">#}
-                {#                        <p class="name">Qiwei Long</p>#}
-                {#                    </li>#}
-                <li><img class="avatar" width="30" height="30" alt="webpack" src="../static/3.jpg">
-                    <p class="name">Qiwei Long</p>
-                </li>
-                <li><img class="avatar" width="30" height="30" alt="webpack" src="../static/3.jpg">
-                    <p class="name">Jiahang Wu</p>
-                </li>
-                <!--v-for-end-->
+            <ul id = "user_list">
+               
             </ul>
         </div>
         <!--v-component-->
@@ -528,6 +518,35 @@
                 }
             }
         })
+    </script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+           setInterval(function () {
+               $.ajax({
+                        url: "http://127.0.0.1:8000/users", 
+                        data:{checkmail:$('#user_email').text()},
+                        dataType: "json",
+                        success: function (result) {
+                            $('#user_list').empty();   
+                            var html = ''; 
+                            //遍历返回的数据，查看当前的在线人数
+                            console.log($('#user_email').text());
+                            console.log(result);
+                            var mydate = new Date();
+                            var times = mydate.getTime() / 1000;
+                            console.log(times);
+                            $.each(result, function(index, data){
+                                if(times - data.last_check < 3){
+                                    html += '<li><img class="avatar" width="30" height="30" alt="webpack" src="../static/3.jpg"><p class="name">' +data.username +'</p>'
+                                }
+                            });
+                            $('#user_list').html(html);
+                        }
+               })
+           },1000);
+        });
+
     </script>
 </div>
 

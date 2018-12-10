@@ -3,6 +3,7 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, Group
 from django.db import models
 from django.utils import timezone
 
+import time
 
 class MyUserManager(BaseUserManager):
     def create_user(self, email, username, password=None):
@@ -48,7 +49,7 @@ class User(AbstractBaseUser):
     created_at = models.DateTimeField('Creation Time', auto_now_add=True)
 
     username = models.TextField(unique=True)
-    last_check = models.DateTimeField('last check Time', default=timezone.now())
+    last_check = models.IntegerField('last check Time',default = time.time())
 
     USERNAME_FIELD = 'email'
 

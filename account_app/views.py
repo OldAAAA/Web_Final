@@ -12,7 +12,8 @@ from rest_framework import viewsets
 from rest_framework import serializers
 from .serializers import UserSerializer
 from rest_framework.response import Response
-from django.utils import timezone
+import time
+import datetime
 
 User = get_user_model()
 
@@ -62,7 +63,7 @@ def main(request):
 
     else:
         if request.user.is_authenticated:
-            return render(request, '../templates/main.html', {'username': request.user.username})
+            return render(request, '../templates/main.html', {'username': request.user.username,'email':request.user.email})
         else:
             return render(request, '../templates/index.html')
 
@@ -203,7 +204,8 @@ class UserViewSet(viewsets.ModelViewSet):
     """    
     def list(self, request):
         checkemail = request.query_params.__getitem__('checkmail')
-        last_check = timezone.now()
+        last_check = time.time()
+        print(checkemail)
         User.objects.filter(email=checkemail).update(last_check=last_check)
         queryset = User.objects.all()
         serializer = UserSerializer(queryset, many=True)
