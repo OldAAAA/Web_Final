@@ -1,0 +1,7 @@
+venv/
+.idea/
+account_app/migrations/
+account_app/__pycache__/
+my_app/__pycache__/
+.vscode/
+db.sqlite3
