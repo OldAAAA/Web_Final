@@ -508,9 +508,8 @@
                 created() {
                     // insert code here to connect to 'ws://localhost:8080/echo' and assign the
                     // new websocket to 'this.ws'
-                    this.websocket = new WebSocket("ws://localhost:8080/echo");
+                    this.websocket = new WebSocket("ws://localhost:8080/websocket/'"+document.getElementById('nick_name_id').innerHTML+"'");
                     this.websocket.onmessage = this.recvMessageHandler;
-                    this.username = "{{ username }}";
                     console.log("Web socket is created.");
                 },
 
@@ -521,23 +520,10 @@
                     },
                     recvMessageHandler(message) {
                         // insert code here
-                        var data = JSON.parse(message.data);
-                        console.log("You receive: " + data.currenttime);
+                        console.log("You receive: " + message.data);
 
-                        if (data.name == this.username) {
-                            this.rawHtml += ('<li>' + '<p class="time"><span>' + data.currenttime + '</span></p>' +
-                                '<div class="main self">' + '<a >' + data.name + '</a><br>' +
-                                '<img class="avatar" width="30" height="30" src="../static/1.jpg">' +
-                                '<div class="text">' + data.detail_message +
-                                '</div></div></li>');
-                        } else {
-                            this.rawHtml += ('<li>' + '<p class="time"><span>' + data.currenttime + '</span></p>' +
-                                '<div class="main self2">' + '<a >' + data.name + '</a><br>' +
-                                '<img class="avatar" width="30" height="30" src="../static/1.jpg">' +
-                                '<div class="text">' + data.detail_message +
-                                '</div></div></li>');
-                        }
-
+                        var datagram = JSON.parse(message.data);
+                        this.rawHtml += datagram.message;
                         this.$nextTick(() => {
 
                             var div = document.getElementById('messageScroll');
@@ -555,19 +541,18 @@
                         var hour = date.getHours();
                         var minute = date.getMinutes();
                         var currenttime = hour + seperator + minute;
-                        var data1 = {
-                            currenttime: currenttime,
-                            name: document.getElementById('nick_name_id').innerHTML,
-                            detail_message: this.message
-                        }
-                        // var data = '<li>' + '<p class="time"><span>' + currenttime + '</span></p>' +
-                        //     '<div class="main self">' + '<a >' + document.getElementById('nick_name_id').innerHTML + '</a><br>' +
-                        //     '<img class="avatar" width="30" height="30" src="../static/1.jpg">' +
-                        //     '<div class="text">' + this.message +
-                        //     '</div></div></li>'
+                        var data = '<li>' + '<p class="time"><span>' + currenttime + '</span></p>' +
+                            '<div class="main self">' + '<a >' + document.getElementById('nick_name_id').innerHTML + '</a><br>' +
+                            '<img class="avatar" width="30" height="30" src="../static/1.jpg">' +
+                            '<div class="text">' + this.message +
+                            '</div></div></li>';
 
-
-                        this.websocket.send(JSON.stringify(data1));
+                        var datagram = {
+                            "username" : document.getElementById('nick_name_id').innerHTML,
+                            "message" : data,
+                            "to" : '12345678aa' //两种选择一种是All 另一种是对方用户名
+                        };
+                        this.websocket.send(JSON.stringify(datagram));
                         this.message = "";
                     }
                 }
