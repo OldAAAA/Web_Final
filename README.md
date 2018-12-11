@@ -6,11 +6,13 @@ python -m venv venv
 ~~~
 ### 激活虚拟环境
 ~~~
-venv/Scripts/activate
+cd venv/Scripts  
+activate
 ~~~
 ### 退出虚拟环境
 ~~~
-venv/Scripts/deactivate
+cd venv/Scripts
+deactivate
 ~~~
 ### 依照requirements.txt安装需要的包
 ~~~
