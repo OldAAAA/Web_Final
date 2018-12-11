@@ -33,18 +33,21 @@ class MyForm(forms.Form):
 
 
 class ChangeEmailForm(forms.Form):
-    email = forms.EmailField(required=True, error_messages={'invalid': 'enter a valid email address.'},
+    email = forms.EmailField(required=False, error_messages={'invalid': 'enter a valid email address.'},
                              widget=forms.TextInput(
                                  attrs={'class': "form-control", 'type': 'email', 'id': 'email'}))
 
 
 class ChangePasswordForm(forms.Form):
-    old_pwd = forms.CharField(required=True, widget=forms.PasswordInput(
-        attrs={'class':'form-control','type': 'password', 'id': 'old_password', 'placeholder': "Old Password"}))
-    new_pwd = forms.CharField(required=True, widget=forms.PasswordInput(
-        attrs={'class':'form-control','type': 'password', 'id': 'password', 'placeholder': "Password"}))
-    new_pwd_confirm = forms.CharField(required=True, widget=forms.PasswordInput(
-        attrs={'class':'form-control','type': 'password', 'id': 'password_confirmation', 'placeholder': "Password confirmation"}))
+    old_pwd = forms.CharField(required=False, widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'type': 'password', 'id': 'old_password', 'placeholder': "Old Password"}))
+    new_pwd = forms.CharField(required=False, widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'type': 'password', 'id': 'password', 'placeholder': "Password"}))
+    new_pwd_confirm = forms.CharField(required=False, widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'type': 'password', 'id': 'password_confirmation',
+               'placeholder': "Password confirmation"}))
+
+
 # <input class="" type="password" name="old_pwd" id="old_password" placeholder="Old Password" required="">
 
 # http://localhost:8000/
@@ -79,6 +82,8 @@ def profile(request):
             return redirect('/upemail')
         if 'ChangePassword' in request.POST:
             return redirect('/uppassword')
+        if 'Return' in request.POST:
+            return redirect('/main')
 
     return render(request, '../templates/profile.html',
                   {'username': request.user.username, 'email': request.user.email})
@@ -87,6 +92,8 @@ def profile(request):
 def upemail(request):
     if request.user.is_authenticated:
         if (request.method == 'POST'):
+            if 'Return' in request.POST:
+                return redirect('/profile')
             f = ChangeEmailForm(request.POST)
             if f.is_valid():
                 a = 0
@@ -114,6 +121,8 @@ def upemail(request):
 def uppassword(request):
     if request.user.is_authenticated:
         if (request.method == 'POST'):
+            if 'Return' in request.POST:
+                return redirect('/profile')
             f2 = ChangePasswordForm(request.POST)
             if f2.is_valid():
                 email = request.user.email
