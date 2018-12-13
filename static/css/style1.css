@@ -8,6 +8,10 @@ body{
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 12px;
 }
+.error{
+    color: red;
+    font-size: 14px;
+}
 
 .inner{
     width: 30%;
