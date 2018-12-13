@@ -35,7 +35,7 @@ class MyForm(forms.Form):
 class ChangeEmailForm(forms.Form):
     email = forms.EmailField(required=False, error_messages={'invalid': 'enter a valid email address.'},
                              widget=forms.TextInput(
-                                 attrs={'class': "form-control", 'type': 'email', 'id': 'email'}))
+                                 attrs={'class': "form-control", 'type': 'email', 'id': 'email','oninput':'isEmail_update()'}))
 
 
 class ChangePasswordForm(forms.Form):
