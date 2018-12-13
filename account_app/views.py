@@ -22,14 +22,14 @@ class MyForm(forms.Form):
     email = forms.EmailField(required=False, error_messages={'invalid': 'enter a valid email address.'},
                              widget=forms.TextInput(
                                  attrs={'id': 'email', 'class': 'inputText', 'placeholder': 'Email',
-                                        'oninput': 'checkEmail()'}))
+                                        'oninput': 'isEmail()'}))
     username = forms.CharField(required=False, widget=forms.TextInput(
-        attrs={'id': 'username', 'class': 'inputText', 'placeholder': 'Username', 'oninput': 'checkUsername()'}))
+        attrs={'id': 'username', 'class': 'inputText', 'placeholder': 'Username', 'oninput': 'isUsername()'}))
     pwd = forms.CharField(required=False, widget=forms.PasswordInput(
-        attrs={'id': 'password', 'class': 'inputText', 'placeholder': 'Password', 'oninput': 'checkPassword1()'}))
+        attrs={'id': 'password', 'class': 'inputText', 'placeholder': 'Password', 'oninput': 'checkpassword()'}))
     pwd_confirm = forms.CharField(required=False, widget=forms.PasswordInput(
         attrs={'id': 'password_confirmation', 'class': 'inputText', 'placeholder': 'Password confirmation',
-               'oninput': 'checkPassword2()'}))
+               'oninput': 'checkpasswordconfirm()'}))
 
 
 class ChangeEmailForm(forms.Form):

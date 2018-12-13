@@ -61,6 +61,7 @@
                     <div class="error">
                         {{ errorUsername }}
                     </div>
+                    <span id="checkusername"> </span>
                     <!--<span id="checkemail"> </span>-->
                     <!--<input type="email" id=email placeholder="Email">-->
                     {{ form.email }}
@@ -71,23 +72,28 @@
                     <div id="error_div" class="error">
                         {{ error1 }}
                     </div>
+                    <span id="checkemail"> </span>
                     <!--<span id="checkpassword"> </span>-->
                     <!--<input type="password" id=password placeholder="Password">-->
                     <!--<input type="password" id=password_confirmation placeholder="Password confirmation">-->
-                    {{ form.pwd }}
 
+                    {{ form.pwd }}
                     <span class="error" id="usrPasswordShortErr"></span>
                     <div class="error">
                         {{ errorPasswordShort }}
                     </div>
+                    <span id="checkpassword"> </span>
+
 
                     {{ form.pwd_confirm }}
                     <span class="error" id="usrPasswordMismatchErr"></span>
                     <div class="error">
                         {{ errorPasswordMatch }}
                     </div>
+                    <span id="checkpasswordconfirm"> </span>
+
                 </div>
-                <button name="Submit" value="Submit" onclick="return isEmail(),checkpassword();"><span>Sign up </span></button>
+                <button name="Submit" value="Submit" onclick="return isall();"><span>Sign up </span></button>
             </div>
         </form>
     </body>
