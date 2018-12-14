@@ -35,7 +35,8 @@ class MyForm(forms.Form):
 class ChangeEmailForm(forms.Form):
     email = forms.EmailField(required=False, error_messages={'invalid': 'enter a valid email address.'},
                              widget=forms.TextInput(
-                                 attrs={'class': "form-control", 'type': 'email', 'id': 'email','oninput':'isEmail_update()'}))
+                                 attrs={'class': "form-control", 'type': 'email', 'id': 'email',
+                                        'oninput': 'isEmail_update()'}))
 
 
 class ChangePasswordForm(forms.Form):
@@ -52,7 +53,7 @@ class ChangePasswordForm(forms.Form):
 
 # http://localhost:8000/
 # if not logging in yet -> /login
-# if already logging in -> /me
+# if already logging in -> /main
 def default(request):
     if request.user.is_authenticated:
         return redirect('/main')
@@ -73,7 +74,7 @@ def main(request):
             return render(request, '../templates/main.html',
                           {'username': request.user.username, 'email': request.user.email})
         else:
-            return render(request, '../templates/index.html')
+            return redirect('/login')
 
 
 def profile(request):
@@ -115,7 +116,7 @@ def upemail(request):
             f = ChangeEmailForm(default_data)
             return render(request, '../templates/upemail.html', {'form': f})
     else:
-        return redirect('/default')
+        return redirect('/login')
 
 
 def uppassword(request):
@@ -151,7 +152,7 @@ def uppassword(request):
             context = {'form2': f2, 'error': f2.errors}
             return render(request, '../templates/uppassword.html', context)
     else:
-        return render(request, '../templates/index.html')
+        return redirect('/login')
 
 
 def login(request):
