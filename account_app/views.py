@@ -103,7 +103,7 @@ def upemail(request):
                 context = {"form": f, 'error': f.errors, 'username': request.user.username}
                 if len(filterResult) > 0:
                     a = 1
-                    context['error1'] = 'email already taken.'
+                    context['error'] = 'email already taken.'
                 if a != 1:
                     obj = User.objects.get(username=request.user.username)
                     obj.email = email
