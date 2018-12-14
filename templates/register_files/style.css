@@ -1,0 +1,237 @@
+/*
+ By:OldAAAAAA 16301073
+	
+	i will never  hand-writing css 
+
+*/
+
+
+/*-- Index-Page-Styling --*/
+
+
+/*-- Navbar --*/
+
+.navbar-default {
+	position: absolute;
+	z-index: 99999;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.88);
+	border: none;
+	border-radius: 0;
+	margin: 0;
+	padding: 20px 0;
+}
+
+.navbar-default .navbar-brand {
+	color: #1dc8d9;
+	font-family: 'Cinzel Decorative', cursive;
+	font-size: 36px;
+	font-weight: 800;
+}
+
+.navbar-default .navbar-nav>li>a {
+	font-size: 16px;
+	font-weight: 700;
+	font-family: 'Montserrat', sans-serif;
+	color: #000;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+	color: #1dc8d9;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+	color: #1dc8d9;
+	background-color: transparent;
+}
+
+/*-- //Navbar --*/
+
+
+
+/*-- Slider --*/
+
+.slider {
+	position: relative;
+	padding: 0;
+}
+
+.rslides {
+	position: relative;
+	list-style: none;
+	overflow: hidden;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.rslides li {
+	-webkit-backface-visibility: hidden;
+	position: absolute;
+	display: none;
+	width: 100%;
+	left: 0;
+	top: 0;
+}
+
+.rslides li:first-child {
+	position: relative;
+	display: block;
+	float: left;
+}
+
+.rslides img {
+	display: block;
+	height: auto;
+	float: left;
+	width: 100%;
+	border: 0;
+}
+
+.layer {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.4);
+	text-align: center;
+}
+
+.caption {
+	position: absolute;
+	top: 38%;
+	left: 14%;
+}
+
+.caption h3 {
+	text-align: left;
+	font-size: 60px;
+	font-weight: 800;
+	line-height: 70px;
+	color: #FFF;
+	width: 65%;
+}
+
+.caption h3 span {
+	color: #1dc8d9;
+}
+
+a.callbacks_nav {
+	display: none;
+}
+
+ul.callbacks_tabs {
+	position: absolute;
+	z-index: 9999;
+	top: 35%;
+	right: 10%;
+}
+
+ul.callbacks_tabs li {
+	display: block;
+}
+
+.callbacks_tabs a{
+	visibility: hidden;
+}
+
+.callbacks_tabs a:after {
+	content: "\f111";
+	font-size: 0;
+	font-family: FontAwesome;
+	visibility: visible;
+	display: block;
+	height: 12px;
+	width: 12px;
+	display: inline-block;
+	background: #1dc8d9;
+	-ms-transform: rotate(40deg);
+	-webkit-transform: rotate(40deg);
+	transform: rotate(45deg);
+}
+
+.callbacks_here a:after {
+	border: 2px solid #FFF;
+	background: #FFF;
+}
+
+.slider-2 ul.callbacks_tabs, .slider-3 ul.callbacks_tabs, .slider-4 ul.callbacks_tabs {
+	display: none;
+}
+
+/*-- //Slider --*/
+
+
+
+
+/*-- Footer --*/
+
+.footer {
+	/*--w3layouts--*/
+	/*--agileits--*/
+	padding: 100px 0 50px;
+	background: url("../images/footer.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	color: #FFF;
+}
+
+.newsletter h4 {
+	text-align: left;
+	font-size: 35px;
+	font-weight: 600;
+	color: #FFF;
+}
+
+.newsletter p {
+	color: #FFF;
+	line-height: 25px;
+	padding-right: 30px;
+	margin: 15px 0 10px;
+}
+
+.newsletter input[type="text"] {
+	width: 74%;
+	padding: 15px;
+	/*--w3layouts--*/
+	/*--agileits--*/
+	background-color: #333;
+	border: none;
+	outline: none;
+	border-radius: 3px;
+	color: #FFF;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.newsletter input[type="submit"] {
+	padding: 14px 30px;
+	background-color: #0bb46d;
+	border: none;
+	outline: none;
+	color: #FFF;
+	font-weight: 600;
+}
+
+.newsletter input[type="submit"]:hover {
+	background-color: #009688;
+}
+
+.copyright {
+	padding-top: 25px;
+}
+
+.copyright a {
+	color: #FFF;
+	font-weight: 600;
+}
+
+.copyright a:hover {
+	color: #1dc8d9;
+}
+/*-- Footer --*/
+
+/*-- //Index-Page-Styling --*/

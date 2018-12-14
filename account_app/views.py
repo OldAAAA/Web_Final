@@ -35,7 +35,7 @@ class MyForm(forms.Form):
 class ChangeEmailForm(forms.Form):
     email = forms.EmailField(required=False, error_messages={'invalid': 'enter a valid email address.'},
                              widget=forms.TextInput(
-                                 attrs={'class': "form-control", 'type': 'email', 'id': 'email'}))
+                                 attrs={'class': "form-control", 'type': 'email', 'id': 'email','oninput':'isEmail_update()'}))
 
 
 class ChangePasswordForm(forms.Form):
@@ -225,10 +225,12 @@ def register(request):
 # this method is to logout
 # and set user status to offline
 def logout(request):
-    if request.method == "GET":
+    try:
         User.objects.filter(email=request.user.email).update(is_online=False)
         auth.logout(request)
         return render(request, '../templates/logout.html')
+    except AttributeError as e:
+        return redirect('/login/')
 
 
 class UserViewSet(viewsets.ModelViewSet):
