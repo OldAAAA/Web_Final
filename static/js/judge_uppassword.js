@@ -4,28 +4,6 @@ var passwordright = true;
 var conpasswordright = true;
 
 
-// function isEmail()
-// // {
-// //     var email=document.getElementById("email").value;
-// // 	var pattern= /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-// // 		strEmail=pattern.test(email);
-// //     	if (strEmail)
-// //     	{
-// // 			document.getElementById("checkemail").innerHTML=" ";
-// // 			document.getElementById("email").style.borderColor="rgb(29,200,287)";
-// // 			emailright= true;
-// //     	}
-// // 		else
-// //     	{
-// // 			document.getElementById("checkemail").style .color="red";//设置邮箱不可用时的字体颜色
-// // 			document.getElementById("checkemail").style.fontSize="14px";
-// // 			document.getElementById("checkemail").innerHTML="Enter a valid email address!";
-// // 			document.getElementById("email").style.borderColor="red";
-// // 			emailright= false;
-// // 			return false;
-// // 		}
-// // }
-
 function checkpassword(){
 	if(document.getElementById("old_password").value.length<6){
         document.getElementById("checkpassword").style.color="red";
@@ -70,6 +48,7 @@ function checkpassword(){
 }
 
 function checkoldpassword() {
+	document.getElementById("success2_div").innerHTML="";
 	if(document.getElementById("old_password").value.length<6){
         document.getElementById("check_oldpassword").style.color="red";
         document.getElementById("check_oldpassword").style.fontSize="14px";
@@ -90,6 +69,7 @@ function checkoldpassword() {
 }
 
 function checknewpassword() {
+	document.getElementById("success2_div").innerHTML="";
 	if(document.getElementById("password").value.length<6){
         document.getElementById("check_newpassword").style.color="red";
         document.getElementById("check_newpassword").style.fontSize="14px";
@@ -110,6 +90,7 @@ function checknewpassword() {
 }
 
 function checkpasswordconfirm() {
+	document.getElementById("success2_div").innerHTML="";
 	if(document.getElementById("password_confirmation").value!=document.getElementById("password").value){
 		document.getElementById("check_passwordconfirm").style.color="red";
 		document.getElementById("check_passwordconfirm").style.fontSize="14px";

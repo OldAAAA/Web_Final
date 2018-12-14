@@ -11,6 +11,10 @@ body, html {
     color: red;
     font-size: 14px;
 }
+.success{
+    color: green;
+    font-size: 14px;
+}
 
 .container {
     /*background-color: rgb(246, 248, 249);*/
