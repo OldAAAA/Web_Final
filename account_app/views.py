@@ -225,10 +225,12 @@ def register(request):
 # this method is to logout
 # and set user status to offline
 def logout(request):
-    if request.method == "GET":
+    try:
         User.objects.filter(email=request.user.email).update(is_online=False)
         auth.logout(request)
         return render(request, '../templates/logout.html')
+    except AttributeError as e:
+        return redirect('/login/')
 
 
 class UserViewSet(viewsets.ModelViewSet):
