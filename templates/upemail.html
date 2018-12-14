@@ -13,6 +13,7 @@
     <title>change email</title>
     <link rel="stylesheet" href="../static/css/style_pro.css" type="text/css" media="all">
     <link rel="shortcut icon" href="../static/images/favicon.png">
+
     <script src="../static/js/judge_email.js"></script>
 </head>
 
@@ -34,29 +35,34 @@
                     </div>
                 </div>
 
-                <span id="checkemail_up">{{ error }} </span>
+
+                <div class="form-group " align="center">
+                    {{ form.email }}
+                </div>
+
+                <div>
+                    <span class="error" style="color: red">{{ error.email }}</span>
+                </div>
+                <span id="usrChangeEmailErr"></span>
+                <div id="success_div" class="success">
+                    {{ changeEmailSuccess }}
+                </div>
+
+                <span class="error" id="checkemail_up"> {{ error }}</span>
                 <form method="post">
                     {% csrf_token %}
                     <div class="form-group " align="center">
-                        {{ form.email }}
-                    </div>
 
-                    <div>
-                        <span class="error" style="color: red">{{ error.email }}</span>
-                    </div>
-                    <span class="error" id="usrChangeEmailErr"></span>
-                    <div id="success_div" class="success">
-                        {{ changeEmailSuccess }}
-                    </div>
 
-                    <span id="checkemail_up"> </span>
-
-                    <div class="form-group " align="center">
                         <input name="Update" class="btn btn-success" type="submit" class="btn btn-primary btn-block"
                                onclick="return isEmail_update();" value="Update">
-                        <input name="Return" class="btn btn-success" type="submit" class="btn btn-primary btn-block" value="Return">
-                    </div>
 
+
+                        <input name="Return" class="btn btn-success" type="submit" class="btn btn-primary btn-block"
+                               value="Return">
+
+
+                    </div>
                 </form>
 
 
