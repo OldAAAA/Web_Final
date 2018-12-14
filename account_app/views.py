@@ -64,7 +64,7 @@ def main(request):
         if 'LogOut' in request.POST:
             if request.user.is_authenticated:
                 auth.logout(request)
-            return render(request, '../templates/index.html')
+            return redirect('/logout')
         if 'Profile' in request.POST:
             return redirect('/profile')
 
