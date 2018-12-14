@@ -160,6 +160,8 @@ def uppassword(request):
 def login(request):
     if request.method == "POST":
         email_username = request.POST['email_username']
+        email_username = email_username.strip()
+        print(email_username)
         password = request.POST['pw']
         context = {'email_username': email_username}
         h1 = User.objects.filter(email=email_username)
