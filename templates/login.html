@@ -55,8 +55,8 @@
                 <script src="../static/js/judge_email.js"></script>
                 <div class="title">User Login</div>
                 <div class="enter_text">
-                    <input class="inputText" id="email" type="email" name='email' placeholder="Email" value="{{ email }}" oninput="isEmail_login()">
-                    <span id="checkemail_in"> </span>
+                    <input class="inputText" id="email_username"  name='email_username' placeholder="Email/Username" value="{{ email_username }}" oninput="isEmailorUsername_login()">
+                    <span id="checkemail_username_in"> </span>
                     <input class="inputText" type="password" name='pw' placeholder="Password">
                     <div class="error">
                         {{ emailNotExistError }}

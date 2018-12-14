@@ -35,33 +35,6 @@ function checkpassword() {
         return true;
     }
 
-    // if(password.length<6){
-    //     document.getElementById("checkpassword").style.color="red";
-    //     document.getElementById("checkpassword").style.fontSize="14px";
-    // 	document.getElementById("checkpassword").innerHTML="Password too short (6 chars. min)";
-    // 	document.getElementById("password").style.borderColor="red";
-    //     return false;
-    // }else if(document.getElementById("password").value==null){
-    // 	document.getElementById("checkpassword").style.color="red";
-    // 	document.getElementById("checkpassword").style.fontSize="14px";
-    // 	document.getElementById("checkpassword").innerHTML="Password too short (6 chars. min)";
-    // 	document.getElementById("password").style.borderColor="red";
-    //     return false;
-    // }else if(document.getElementById("password_confirmation").value!=document.getElementById("password").value){
-    // 	document.getElementById("checkpassword").style.color="red";
-    // 	document.getElementById("checkpassword").style.fontSize="14px";
-    // 	document.getElementById("checkpassword").innerHTML="Password mismatch!";
-    // 	document.getElementById("password_confirmation").style.borderColor="red";
-    // 	return false;
-    // }else{
-    // 	document.getElementById("checkpassword").innerHTML="";
-    // 	document.getElementById("password").style.borderColor="rgb(29,200,287)";
-    // 	document.getElementById("password_confirmation").style.borderColor="rgb(29,200,287)";
-    // 	// document.getElementById("check").innerHTML="";
-    // 	// document.getElementById("check").style.display="none";
-    // 	// document.getElementById("check").style.display="inline";
-    // }
-
 }
 
 function checkpasswordconfirm() {
