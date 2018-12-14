@@ -159,22 +159,30 @@ def uppassword(request):
 
 def login(request):
     if request.method == "POST":
-        email = request.POST['email']
+        email_username = request.POST['email_username']
         password = request.POST['pw']
-        context = {'email': email}
-        hasUser = User.objects.filter(email=email)
+        context = {'email_username': email_username}
+        h1 = User.objects.filter(email=email_username)
+        h2 = User.objects.filter(username=email_username)
+        hasUser = h1 or h2
         if hasUser:  # User Exists
-            user = authenticate(email=email, password=password)
+            if h1:
+                user = authenticate(email=email_username, password=password)
+            if h2:
+                email_username = User.objects.get(username=email_username).email
+                user = authenticate(email=email_username, password=password)
+
             if user is not None:
                 auth.login(request, user)
                 request.session.set_expiry(1000)
-                User.objects.filter(email=email).update(is_online=True)
+                User.objects.filter(email=email_username).update(is_online=True)
+
                 return redirect('/main')
             else:
                 context['passwordWrongError'] = 'Wrong password!'
                 return render(request, '../templates/login.html', context)
         else:
-            context['emailNotExistError'] = 'The email is not registed!'
+            context['emailNotExistError'] = 'The user is not exist!'
             return render(request, '../templates/login.html', context)
     return render(request, '../templates/login.html')
 
@@ -194,7 +202,7 @@ def register(request):
                 a = 0
                 b = 0
                 usern = r'^[0-9a-z_]{1,}$';
-                if re.match(usern,username) == None:
+                if re.match(usern, username) == None:
                     a = 1
                     context['errorUsername'] = 'username has illegal characters.'
                 if password != password_confirm:

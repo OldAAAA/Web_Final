@@ -5,6 +5,7 @@ from django.utils import timezone
 
 import time
 
+
 class MyUserManager(BaseUserManager):
     def create_user(self, email, username, password=None):
         """
@@ -30,7 +31,7 @@ class MyUserManager(BaseUserManager):
         """
         user = self.create_user(
             email,
-            username = username,
+            username=username,
             password=password,
         )
         user.is_admin = True
@@ -42,14 +43,13 @@ class User(AbstractBaseUser):
     # email
     email = models.EmailField(unique=True)
 
-
     objects = MyUserManager()
 
     # creation date
     created_at = models.DateTimeField('Creation Time', auto_now_add=True)
 
     username = models.TextField(unique=True)
-    last_check = models.IntegerField('last check Time',default = time.time())
+    last_check = models.IntegerField('last check Time', default=time.time())
 
     USERNAME_FIELD = 'email'
 
@@ -76,4 +76,3 @@ class User(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
-
