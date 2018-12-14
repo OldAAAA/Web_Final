@@ -28,6 +28,7 @@ function isEmail_update()
     	if (strEmail)
     	{
 			document.getElementById("email").style.borderColor="rgb(29,200,287)";
+			document.getElementById("checkemail_up").innerHTML="";
 			return true;
     	}
 		else

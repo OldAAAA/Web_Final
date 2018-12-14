@@ -43,12 +43,12 @@ class ChangeEmailForm(forms.Form):
 
 class ChangePasswordForm(forms.Form):
     old_pwd = forms.CharField(required=False, widget=forms.PasswordInput(
-        attrs={'class': 'form-control', 'type': 'password', 'id': 'old_password', 'placeholder': "Old Password"}))
+        attrs={'class': 'form-control', 'type': 'password', 'id': 'old_password', 'placeholder': "Old Password",'oninput':'checkoldpassword()'}))
     new_pwd = forms.CharField(required=False, widget=forms.PasswordInput(
-        attrs={'class': 'form-control', 'type': 'password', 'id': 'password', 'placeholder': "Password"}))
+        attrs={'class': 'form-control', 'type': 'password', 'id': 'password', 'placeholder': "Password",'oninput':'checknewpassword()'}))
     new_pwd_confirm = forms.CharField(required=False, widget=forms.PasswordInput(
         attrs={'class': 'form-control', 'type': 'password', 'id': 'password_confirmation',
-               'placeholder': "Password confirmation"}))
+               'placeholder': "Password confirmation",'oninput':'checkpasswordconfirm()'}))
 
 
 # <input class="" type="password" name="old_pwd" id="old_password" placeholder="Old Password" required="">
