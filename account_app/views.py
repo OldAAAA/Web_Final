@@ -1,4 +1,6 @@
 # coding:utf-8
+import re
+
 from django.contrib.auth.models import Group
 from django import forms
 from django.shortcuts import render, redirect
@@ -191,7 +193,8 @@ def register(request):
                 context = {'form': f, 'error': f.errors}
                 a = 0
                 b = 0
-                if username.islower() == False:
+                usern = r'^[0-9a-z_]{1,}$';
+                if re.match(usern,username) == None:
                     a = 1
                     context['errorUsername'] = 'username has illegal characters.'
                 if password != password_confirm:
