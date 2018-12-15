@@ -43,12 +43,14 @@ class ChangeEmailForm(forms.Form):
 
 class ChangePasswordForm(forms.Form):
     old_pwd = forms.CharField(required=False, widget=forms.PasswordInput(
-        attrs={'class': 'form-control', 'type': 'password', 'id': 'old_password', 'placeholder': "Old Password",'oninput':'checkoldpassword()'}))
+        attrs={'class': 'form-control', 'type': 'password', 'id': 'old_password', 'placeholder': "Old Password",
+               'oninput': 'checkoldpassword()'}))
     new_pwd = forms.CharField(required=False, widget=forms.PasswordInput(
-        attrs={'class': 'form-control', 'type': 'password', 'id': 'password', 'placeholder': "Password",'oninput':'checknewpassword()'}))
+        attrs={'class': 'form-control', 'type': 'password', 'id': 'password', 'placeholder': "Password",
+               'oninput': 'checknewpassword()'}))
     new_pwd_confirm = forms.CharField(required=False, widget=forms.PasswordInput(
         attrs={'class': 'form-control', 'type': 'password', 'id': 'password_confirmation',
-               'placeholder': "Password confirmation",'oninput':'checkpasswordconfirm()'}))
+               'placeholder': "Password confirmation", 'oninput': 'checkpasswordconfirm()'}))
 
 
 # <input class="" type="password" name="old_pwd" id="old_password" placeholder="Old Password" required="">
@@ -203,7 +205,7 @@ def register(request):
                 context = {'form': f, 'error': f.errors}
                 a = 0
                 b = 0
-                usern = r'^[0-9a-z_]{1,}$';
+                usern = r'^[0-9a-z_]{3,20}$';
                 if re.match(usern, username) == None:
                     a = 1
                     context['errorUsername'] = 'username has illegal characters.'

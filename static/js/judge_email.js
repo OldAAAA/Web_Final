@@ -3,7 +3,7 @@ function isEmailorUsername_login()
     var email_username=document.getElementById("email_username").value;
     var email=email_username.replace(/(\s*$)/g, "");
     var pattern= /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-	var usern = /^[0-9a-z_]{1,}$/;
+	var usern = /^[0-9a-z_]{3,20}$/;
     	if (pattern.test(email)||usern.test(email_username))
     	{
     		document.getElementById("checkemail_username_in").innerHTML="";

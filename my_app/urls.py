@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
+from django.views import static
+
 from account_app import views
 from rest_framework import routers
 from account_app.views import UserViewSet
+from my_app import settings
 
 user_list = UserViewSet.as_view({'get': 'list'})
 router = routers.DefaultRouter()
@@ -35,4 +38,7 @@ urlpatterns = [
     path('logout/',views.logout),
     path('profile/',views.profile),
     url(r'^users', user_list),
+    url(r'^static/(?P<path>.*)$', static.serve,
+        {'document_root': settings.STATIC_ROOT}, name='static')
+
 ]

@@ -502,7 +502,8 @@
                 // insert code here to connect to 'ws://localhost:8080/echo' and assign the
                 // new websocket to 'this.ws'
                 this.username = document.getElementById('nick_name_id').innerHTML
-                this.websocket = new WebSocket("ws://localhost:8080/websocket/'" + document.getElementById('nick_name_id').innerHTML + "'");
+                {#this.websocket = new WebSocket("ws://localhost:8080/websocket/'" + document.getElementById('nick_name_id').innerHTML + "'");#}
+                this.websocket = new WebSocket("ws://localhost:8080/echo");
                 this.websocket.onmessage = this.recvMessageHandler;
                 console.log("Web socket is created.");
             },
@@ -516,20 +517,20 @@
                     // insert code here
                     console.log("You receive: " + message.data);
                     var datagram = JSON.parse(message.data);
-                    var data1 = JSON.parse(datagram.message);
-                    console.log("fromusername:" + datagram.fromusername);
+                    var data1 = datagram.message;
+                    console.log("fromusername:" + datagram.username);
                     console.log("username:" + this.username);
 
 
-                    if (datagram.fromusername == this.username) {
+                    if (datagram.username == this.username) {
                         this.rawHtml += ('<li>' + '<p class="time"><span>' + data1.currenttime + '</span></p>' +
-                            '<div class="main self">' + '<a >' + datagram.fromusername + '</a><br>' +
+                            '<div class="main self">' + '<a >' + datagram.username + '</a><br>' +
                             '<img class="avatar" width="30" height="30" src="../static/1.jpg">' +
                             '<div class="text">' + data1.detail_message +
                             '</div></div></li>');
                     } else {
                         this.rawHtml += ('<li>' + '<p class="time"><span>' + data1.currenttime + '</span></p>' +
-                            '<div class="main self2">' + '<a >' + datagram.fromusername + '</a><br>' +
+                            '<div class="main self2">' + '<a >' + datagram.username + '</a><br>' +
                             '<img class="avatar" width="30" height="30" src="../static/1.jpg">' +
                             '<div class="text">' + data1.detail_message +
                             '</div></div></li>');
@@ -548,24 +549,31 @@
                 sendMessage() {
                     // insert code here
                     console.log("You send: " + this.message);
-                    var date = new Date();
-                    var seperator = ":";
-                    var hour = date.getHours();
-                    var minute = date.getMinutes();
-                    var currenttime = hour + seperator + minute;
-                    var data1 = {
-                        currenttime: currenttime,
-                        detail_message: this.message
+                    if (this.message.trim().length == 0) {
+                        this.message = "";
+                    } else {
+                        var date = new Date();
+                        var seperator = ":";
+                        var hour = date.getHours();
+                        var minute = date.getMinutes();
+                        var currenttime = hour + seperator + minute;
+                        var data1 = {
+                            currenttime: currenttime,
+                            detail_message: this.message
+                        }
+
+                        var datagram = {
+                            "currenttime": currenttime,
+                            "username": document.getElementById('nick_name_id').innerHTML,
+                            "message": data1,
+                            "to": 'All' //两种选择一种是All 另一种是对方用户名
+                        };
+                        this.websocket.send(JSON.stringify(datagram));
+                        this.message = "";
+
                     }
 
-                    var datagram = {
-                        "currenttime": currenttime,
-                        "username": document.getElementById('nick_name_id').innerHTML,
-                        "message": data1,
-                        "to": 'All' //两种选择一种是All 另一种是对方用户名
-                    };
-                    this.websocket.send(JSON.stringify(datagram));
-                    this.message = "";
+
                 }
             }
         })

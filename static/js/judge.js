@@ -59,7 +59,7 @@ function checkpasswordconfirm() {
 
 function isUsername() {
     var username = document.getElementById("username").value;
-    var usern = /^[0-9a-z_]{1,}$/;
+    var usern = /^[0-9a-z_]{3,20}$/;
     if (!usern.test(username)) {
         document.getElementById("checkusername").style.color = "red";
         document.getElementById("checkusername").style.fontSize = "14px";
@@ -132,7 +132,7 @@ function isall() {
 
 
     var username = document.getElementById("username").value;
-    var usern = /^[0-9a-z_]{1,}$/;
+    var usern = /^[0-9a-z_]{3,20}$/;
     if (!usern.test(username)) {
         document.getElementById("checkusername").style.color = "red";
         document.getElementById("checkusername").style.fontSize = "14px";
