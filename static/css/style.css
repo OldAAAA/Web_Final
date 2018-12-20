@@ -25,12 +25,12 @@
 .navbar-default .navbar-brand {
 	color: #1dc8d9;
 	font-family: 'Cinzel Decorative', cursive;
-	font-size: 36px;
+	font-size: 60px;
 	font-weight: 800;
 }
 
 .navbar-default .navbar-nav>li>a {
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: 700;
 	font-family: 'Montserrat', sans-serif;
 	color: #000;

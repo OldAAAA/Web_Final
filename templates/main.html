@@ -578,7 +578,7 @@
             }
         })
     </script>
-    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../static/js/jquery-2.1.4.min.js"></script>
     <script>
         $(document).ready(function () {
             setInterval(function () {
@@ -590,11 +590,8 @@
                         $('#user_list').empty();
                         var html = '';
                         //遍历返回的数据，查看当前的在线人数
-                        console.log($('#user_email').text());
-                        console.log(result);
                         var mydate = new Date();
                         var times = mydate.getTime() / 1000;
-                        console.log(times);
                         $.each(result, function (index, data) {
                             if (times - data.last_check < 3) {
                                 html += '<li><img class="avatar" width="30" height="30" alt="webpack" src="../static/1.jpg"><p class="name">' + data.username + '</p>'
