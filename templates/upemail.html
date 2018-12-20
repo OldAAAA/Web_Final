@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-     <link rel="stylesheet"
+    <link rel="stylesheet"
           href="../static/css/bootstrap.min.css"
-         >
+    >
     <title>change email</title>
     <link rel="stylesheet" href="../static/css/style_pro.css" type="text/css" media="all">
     <link rel="shortcut icon" href="../static/images/favicon.png">
@@ -27,14 +27,16 @@
     </div>
     <div class="profile-block">
         <div class="profile-block__left">
-            <form role="form" method="post" name="user_account">
-                <div class="form-group ">
-                    <div class="center-block">
-                        <img src="../static/1.jpg" class="img-thumbnail" alt="Responsive image">
-                    </div>
+
+            <div class="form-group ">
+                <div class="center-block">
+                    <img src="../static/1.jpg" class="img-thumbnail" alt="Responsive image">
                 </div>
+            </div>
 
 
+            <form method="post">
+                {% csrf_token %}
                 <div class="form-group " align="center">
                     {{ form.email }}
                 </div>
@@ -48,24 +50,22 @@
                 </div>
 
                 <span class="error" id="checkemail_up"> {{ error }}</span>
-                <form method="post">
-                    {% csrf_token %}
-                    <div class="form-group " align="center">
+
+                <div class="form-group " align="center">
 
 
-                        <input name="Update" class="btn btn-success" type="submit" class="btn btn-primary btn-block"
-                               onclick="return isEmail_update();" value="Update">
+                    <input name="Update" class="btn btn-success" type="submit" class="btn btn-primary btn-block"
+                           onclick="return isEmail_update();" value="Update">
 
 
-                        <input name="Return" class="btn btn-success" type="submit" class="btn btn-primary btn-block"
-                               value="Return">
+                    <input name="Return" class="btn btn-success" type="submit" class="btn btn-primary btn-block"
+                           value="Return">
 
 
-                    </div>
-                </form>
-
-
+                </div>
             </form>
+
+
         </div>
 
     </div>
