@@ -89,9 +89,14 @@ def profile(request):
             return redirect('/uppassword')
         if 'Return' in request.POST:
             return redirect('/main')
+    else:
+        if request.user.is_authenticated:
+            return render(request, '../templates/profile.html',
+                          {'username': request.user.username, 'email': request.user.email})
+        else:
+            return redirect('/login')
 
-    return render(request, '../templates/profile.html',
-                  {'username': request.user.username, 'email': request.user.email})
+
 
 
 def upemail(request):
